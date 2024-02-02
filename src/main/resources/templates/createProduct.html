@@ -16,15 +16,15 @@
     <form th:action="@{/product/create}" th:object="${product}" method="post">
         <div class="form-group">
             <label for="nameInput">Name</label>
-            <input th:field="*{productName}" type="text" class="form-control mb-4 col-4" id="nameInput"
+            <input th:field="*{productName}" type="text" class="productname form-control mb-4 col-4" id="nameInput"
                    placeholder="Enter product' name">
         </div>
         <div class="form-group">
             <label for="quantityInput">Quantity</label>
-            <input th:field="*{productQuantity}" type="text" class="form-control mb-4 col-4" id="quantityInput"
+            <input th:field="*{productQuantity}" type="text" class="productquantity form-control mb-4 col-4" id="quantityInput"
                    placeholder="Enter product' name">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="submitbutton btn btn-primary">Submit</button>
     </form>
 </div>
 
