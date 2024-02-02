@@ -43,11 +43,14 @@ class CreateProductFunctionalTest {
         WebElement listButton = driver.findElement(By.className("listbutton"));
         listButton.click();
 
+        //NOTE: Go to create page
         WebElement createProductButton = driver.findElement(By.className("createbutton"));
         createProductButton.click();
         String currentUrl = driver.getCurrentUrl();
         assertEquals(baseUrl + "/product/create", currentUrl);
 
+
+        //NOTE: Input the forms
         WebElement nameInput=driver.findElement(By.className("productname"));
         nameInput.clear();
         //Enter Text
@@ -63,10 +66,12 @@ class CreateProductFunctionalTest {
         WebElement submitProductButton = driver.findElement(By.className("submitbutton"));
         submitProductButton.click();
 
+        //NOTE: Navigate to Product List and Check the elements
         currentUrl = driver.getCurrentUrl();
         assertEquals(baseUrl + "/product/list", currentUrl);
 
         List<WebElement> rows = driver.findElements(By.tagName("tr"));
+        //because rows 0 is the table headers
         List<WebElement> columns = rows.get(1).findElements(By.tagName("td"));
 
         // Assuming the product name is in the first column (index 0)
