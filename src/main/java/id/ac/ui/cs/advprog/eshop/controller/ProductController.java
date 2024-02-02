@@ -16,6 +16,8 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
+    private int productIdCounter = 0;
+
     @GetMapping("/create")
     public String createProductPage(Model model) {
         Product product = new Product();
@@ -25,8 +27,30 @@ public class ProductController {
 
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
+        product.setProductId(String.valueOf(productIdCounter)); // Set product ID
+        productIdCounter++; // Increment ID counter
         service.create(product);
         return "redirect:list";
+    }
+
+    @GetMapping("/edit/{productId}") // Added productId path variable
+    public String editProductPage(@PathVariable String productId, Model model) {
+        Product product = service.findById(productId);
+        model.addAttribute("product", product);
+        return "editProduct"; // Assuming you have a separate view for editing
+    }
+
+    @PostMapping("/edit")
+    public String editProductPost(@ModelAttribute Product product, Model model) {
+        service.update(product);
+        return "redirect:list";
+    }
+
+    @GetMapping("/delete/{productId}")
+    public String deleteProduct(@PathVariable String productId) {
+        Product product = service.findById(productId);
+        service.delete(product);
+        return "redirect:/product/list";
     }
 
     @GetMapping("/list")
