@@ -21,7 +21,13 @@
         <tbody>
         <tr th:each="product: ${products}">
             <td th:text="${product.productName}"></td>
+            <td th:text="${product.productId}"></td>
             <td th:text="${product.productQuantity}"></td>
+            <td>
+                <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-primary btn-sm mb-3">Edit</a>
+                <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-primary btn-sm mb-3 btn-danger">Delete</a>
+            </td>
+
         </tr>
         </tbody>
     </table>
