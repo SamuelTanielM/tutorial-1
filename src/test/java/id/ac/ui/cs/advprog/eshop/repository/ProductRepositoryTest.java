@@ -62,4 +62,48 @@ class ProductRepositoryTest {
         savedProduct = productIterator.next();
         assertEquals(product2.getProductId(), savedProduct.getProductId());
     }
+
+    @Test
+    void testEdit(){
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af7af73bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        product.setProductName("Sampo Cap Bango");
+        product.setProductQuantity(500);
+        productRepository.update(product);
+
+        Iterator<Product> productIterator = productRepository.findAll();
+        assertTrue(productIterator.hasNext());
+        Product savedProduct = productIterator.next();
+        assertEquals(product.getProductId(), savedProduct.getProductId());
+        assertEquals(product.getProductName(), savedProduct.getProductName());
+        assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
+    }
+
+    @Test
+    void testDelete() {
+        // Create a product
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af7af73bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        Iterator<Product> productIterator = productRepository.findAll();
+        assertTrue(productIterator.hasNext());
+        Product savedProduct = productIterator.next();
+        assertEquals(product.getProductId(), savedProduct.getProductId());
+        assertEquals(product.getProductName(), savedProduct.getProductName());
+        assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
+
+        // Delete the product
+        productRepository.delete(product);
+
+        productIterator = productRepository.findAll();
+        // Verify that the product is deleted by checking if it can be found
+        assertFalse(productIterator.hasNext(), "Product should be deleted");
+    }
 }
