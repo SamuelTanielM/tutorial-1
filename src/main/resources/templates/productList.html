@@ -91,7 +91,7 @@
                 <td th:text="${product.productName}"></td>
                 <td th:text="${product.productQuantity}"></td>
                 <td>
-                    <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-primary btn-lg mb-3">Edit</a> <!-- Updated color for edit button -->
+                    <a th:href="@{'/product/edit/' + ${product.productId}}" class="editbutton btn btn-primary btn-lg mb-3">Edit</a> <!-- Updated color for edit button -->
                     <a th:href="@{'/product/delete/' + ${product.productId}}" class="deletebutton btn btn-danger btn-lg mb-3">Delete</a> <!-- Updated color for delete button -->
                 </td>
             </tr>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    private int productIdCounter = 0;
 
     @GetMapping("/create")
     public String createProductPage(Model model) {
@@ -27,13 +27,20 @@ public class ProductController {
 
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
-        product.setProductId(String.valueOf(productIdCounter)); // Set product ID
-        productIdCounter++; // Increment ID counter
+        if (product.getProductName() == null || product.getProductName().isEmpty()) {
+            model.addAttribute("error", "Name is required");
+            return "createProduct";
+        }
+        if (product.getProductQuantity() <= 0) {
+            model.addAttribute("error", "Quantity must be a positive integer");
+            return "createProduct";
+        }
+
         service.create(product);
-        return "redirect:list";
+        return "redirect:/list";
     }
 
-    @GetMapping("/edit/{productId}") // Added productId path variable
+    @GetMapping("/edit/{productId}")
     public String editProductPage(@PathVariable String productId, Model model) {
         Product product = service.findById(productId);
         model.addAttribute("product", product);
@@ -42,8 +49,17 @@ public class ProductController {
 
     @PostMapping("/edit")
     public String editProductPost(@ModelAttribute Product product, Model model) {
+        if (product.getProductName() == null || product.getProductName().isEmpty()) {
+            model.addAttribute("error", "Name is required");
+            return "editProduct";
+        }
+        if (product.getProductQuantity() <= 0) {
+            model.addAttribute("error", "Quantity must be a positive integer");
+            return "editProduct";
+        }
+
         service.update(product);
-        return "redirect:list";
+        return "redirect:/list";
     }
 
     @GetMapping("/delete/{productId}")
