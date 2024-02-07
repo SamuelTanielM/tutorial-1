@@ -10,8 +10,10 @@ import java.util.List;
 @Repository
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
+    private int productIdCounter = 0; // Initialize the ID counter
 
     public Product create(Product product) {
+        product.setProductId(String.valueOf(productIdCounter++));
         productData.add(product);
         return product;
     }
@@ -20,13 +22,19 @@ public class ProductRepository {
         return productData.iterator();
     }
 
+    public class ProductNotFoundException extends RuntimeException {
+        public ProductNotFoundException(String message) {
+            super(message);
+        }
+    }
+
     public Product findById(String productId) {
         for (Product product : productData) {
             if (product.getProductId().equals(productId)) {
                 return product;
             }
         }
-        return null; // Return null if product with given ID is not found
+        throw new ProductNotFoundException("Product with ID " + productId + " not found");
     }
 
     public Product update(Product productToUpdate) {
@@ -39,7 +47,7 @@ public class ProductRepository {
                 return product; // Return the updated product
             }
         }
-        return null; // Return null if product with given ID is not found
+        throw new ProductNotFoundException("Product with ID " + productToUpdate.getProductId() + " not found");
     }
 
     public Product delete(Product productToDelete) {
@@ -51,6 +59,7 @@ public class ProductRepository {
                 return product; // Return the deleted product
             }
         }
-        return null; // Return null if product with given ID is not found
+        throw new ProductNotFoundException("Product with ID " + productToDelete.getProductId() + " not found");
     }
+
 }

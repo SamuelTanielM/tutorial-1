@@ -36,50 +36,138 @@ class CreateProductFunctionalTest {
         baseUrl = String.format("%s:%d", testBaseUrl, serverPort);
     }
 
-    @Test
-    void createProduct_isCorrect(ChromeDriver driver) throws Exception {
-        // Exercise
-        driver.get(baseUrl);
-        WebElement listButton = driver.findElement(By.className("listbutton"));
-        listButton.click();
-
-        //NOTE: Go to create page
-        WebElement createProductButton = driver.findElement(By.className("createbutton"));
-        createProductButton.click();
-        String currentUrl = driver.getCurrentUrl();
-        assertEquals(baseUrl + "/product/create", currentUrl);
-
-
-        //NOTE: Input the forms
+    void createProduct_setup(ChromeDriver driver) {
+        driver.get(String.format(baseUrl+"/product/create"));
         WebElement nameInput=driver.findElement(By.className("productname"));
         nameInput.clear();
-        //Enter Text
         String name="test";
         nameInput.sendKeys(name);
 
         WebElement quanInput=driver.findElement(By.className("productquantity"));
         quanInput.clear();
-        //Enter Text
+        String quant="1";
+        quanInput.sendKeys(quant);
+
+        WebElement submitProductButton = driver.findElement(By.className("submitbutton"));
+        submitProductButton.click();
+    }
+
+    void deleteProduct_setup(ChromeDriver driver) {
+        driver.get(baseUrl + "/product/list");
+
+        List<WebElement> deleteButtons = driver.findElements(By.className("deletebutton"));
+
+        for (WebElement deleteButton : deleteButtons) {
+            deleteButton.click();
+        }
+    }
+
+    @Test
+    void createProduct_isCorrect(ChromeDriver driver) throws Exception {
+        driver.get(baseUrl);
+        WebElement listButton = driver.findElement(By.className("listbutton"));
+        listButton.click();
+
+        WebElement createProductButton = driver.findElement(By.className("createbutton"));
+        createProductButton.click();
+        String currentUrl = driver.getCurrentUrl();
+        assertEquals(baseUrl + "/product/create", currentUrl);
+
+        WebElement nameInput=driver.findElement(By.className("productname"));
+        nameInput.clear();
+        String name="test";
+        nameInput.sendKeys(name);
+
+        WebElement quanInput=driver.findElement(By.className("productquantity"));
+        quanInput.clear();
         String quant="1";
         quanInput.sendKeys(quant);
 
         WebElement submitProductButton = driver.findElement(By.className("submitbutton"));
         submitProductButton.click();
 
-        //NOTE: Navigate to Product List and Check the elements
         currentUrl = driver.getCurrentUrl();
         assertEquals(baseUrl + "/product/list", currentUrl);
 
         List<WebElement> rows = driver.findElements(By.tagName("tr"));
-        //because rows 0 is the table headers
         List<WebElement> columns = rows.get(1).findElements(By.tagName("td"));
 
-        // Assuming the product name is in the first column (index 0)
         String productName = columns.get(0).getText();
         assertEquals("test", productName);
 
         String productQuant = columns.get(1).getText();
         assertEquals("1", productQuant);
-        // Print or use the product name as needed
+
+        deleteProduct_setup(driver);
+    }
+
+    @Test
+    void editProduct_isCorrect(ChromeDriver driver) {
+        driver.get(baseUrl);
+        WebElement listButton = driver.findElement(By.className("listbutton"));
+        listButton.click();
+
+        createProduct_setup(driver);
+        assertEquals(baseUrl + "/product/list", driver.getCurrentUrl());
+
+        WebElement editProductButton = driver.findElement(By.className("editbutton"));
+        editProductButton.click();
+        String currentUrl = driver.getCurrentUrl();
+
+        WebElement nameInput = driver.findElement(By.id("productName"));
+        nameInput.clear();
+        String newName = "Edited Test";
+        nameInput.sendKeys(newName);
+
+        WebElement quantityInput = driver.findElement(By.id("productQuantity"));
+        quantityInput.clear();
+        String newQuantity = "1";
+        quantityInput.sendKeys(newQuantity);
+
+        WebElement submitButton = driver.findElement(By.className("btn-primary"));
+        submitButton.click();
+
+        currentUrl = driver.getCurrentUrl();
+        assertEquals(baseUrl + "/product/list", currentUrl);
+
+        WebElement editedProductRow = driver.findElement(By.xpath("//tr[contains(.,'" + newName + "') and contains(.,'" + newQuantity + "')]"));
+        String productName = editedProductRow.findElement(By.xpath(".//td[1]")).getText();
+        String productQuantity = editedProductRow.findElement(By.xpath(".//td[2]")).getText();
+
+        assertEquals(newName, productName);
+        assertEquals(newQuantity, productQuantity);
+
+        deleteProduct_setup(driver);
+    }
+
+    @Test
+    void deleteProduct_isCorrect(ChromeDriver driver) {
+        driver.get(baseUrl);
+        WebElement listButton = driver.findElement(By.className("listbutton"));
+        listButton.click();
+
+        createProduct_setup(driver);
+        assertEquals(baseUrl + "/product/list", driver.getCurrentUrl());
+
+        WebElement deleteProductButton = driver.findElement(By.className("deletebutton"));
+        deleteProductButton.click();
+
+        assertEquals(baseUrl + "/product/list", driver.getCurrentUrl());
+
+        List<WebElement> rows = driver.findElements(By.tagName("tr"));
+        boolean productFound = false;
+        for (WebElement row : rows) {
+            List<WebElement> columns = row.findElements(By.tagName("td"));
+            if (columns.size() > 0 && columns.get(0).getText().equals("Product Name")) {
+                continue;
+            }
+            if (columns.size() > 0 && columns.get(0).getText().equals("Edited Product")) {
+                productFound = true;
+                break;
+            }
+        }
+        assertEquals(false, productFound);
+
+        deleteProduct_setup(driver);
     }
 }
