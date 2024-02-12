@@ -36,7 +36,7 @@ class CreateProductFunctionalTest {
         baseUrl = String.format("%s:%d", testBaseUrl, serverPort);
     }
 
-    void createProduct_setup(ChromeDriver driver) {
+    void createProductSetup(ChromeDriver driver) {
         driver.get(String.format(baseUrl+"/product/create"));
         WebElement nameInput=driver.findElement(By.className("productname"));
         nameInput.clear();
@@ -52,7 +52,7 @@ class CreateProductFunctionalTest {
         submitProductButton.click();
     }
 
-    void deleteProduct_setup(ChromeDriver driver) {
+    void deleteProductSetup(ChromeDriver driver) {
         driver.get(baseUrl + "/product/list");
 
         List<WebElement> deleteButtons = driver.findElements(By.className("deletebutton"));
@@ -63,7 +63,7 @@ class CreateProductFunctionalTest {
     }
 
     @Test
-    void createProduct_isCorrect(ChromeDriver driver) throws Exception {
+    void createProductIsCorrect(ChromeDriver driver) throws Exception {
         driver.get(baseUrl);
         WebElement listButton = driver.findElement(By.className("listbutton"));
         listButton.click();
@@ -98,16 +98,16 @@ class CreateProductFunctionalTest {
         String productQuant = columns.get(1).getText();
         assertEquals("1", productQuant);
 
-        deleteProduct_setup(driver);
+        deleteProductSetup(driver);
     }
 
     @Test
-    void editProduct_isCorrect(ChromeDriver driver) {
+    void editProductIsCorrect(ChromeDriver driver) {
         driver.get(baseUrl);
         WebElement listButton = driver.findElement(By.className("listbutton"));
         listButton.click();
 
-        createProduct_setup(driver);
+        createProductSetup(driver);
         assertEquals(baseUrl + "/product/list", driver.getCurrentUrl());
 
         WebElement editProductButton = driver.findElement(By.className("editbutton"));
@@ -137,16 +137,16 @@ class CreateProductFunctionalTest {
         assertEquals(newName, productName);
         assertEquals(newQuantity, productQuantity);
 
-        deleteProduct_setup(driver);
+        deleteProductSetup(driver);
     }
 
     @Test
-    void deleteProduct_isCorrect(ChromeDriver driver) {
+    void deleteProductIsCorrect(ChromeDriver driver) {
         driver.get(baseUrl);
         WebElement listButton = driver.findElement(By.className("listbutton"));
         listButton.click();
 
-        createProduct_setup(driver);
+        createProductSetup(driver);
         assertEquals(baseUrl + "/product/list", driver.getCurrentUrl());
 
         WebElement deleteProductButton = driver.findElement(By.className("deletebutton"));
@@ -168,6 +168,6 @@ class CreateProductFunctionalTest {
         }
         assertEquals(false, productFound);
 
-        deleteProduct_setup(driver);
+        deleteProductSetup(driver);
     }
 }
