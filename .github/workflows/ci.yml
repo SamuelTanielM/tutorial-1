@@ -24,19 +24,13 @@ jobs:
         run: ./gradlew test
 
   sonarcloud:
-    name: SonarCloud analysis
     runs-on: ubuntu-latest
-    needs: test  # Ensure that tests are completed before running SonarCloud analysis
     steps:
-      - name: Check out the Git repository
-        uses: actions/checkout@v4
-      - name: Set up Java toolchain
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@v4
         with:
-          distribution: "temurin"
-          java-version: "21"  # Ensure you're using Java 17 or later
-          cache: "false"  # Disable caching to ensure fresh analysis
-      - name: Analyze with SonarCloud
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+      - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
