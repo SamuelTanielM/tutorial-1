@@ -34,7 +34,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: "17"  # Ensure you're using Java 17 or later
+          java-version: "21"  # Ensure you're using Java 17 or later
           cache: "false"  # Disable caching to ensure fresh analysis
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
