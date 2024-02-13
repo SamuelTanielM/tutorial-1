@@ -98,6 +98,85 @@ The possible improvements are as such:
 
 <hr>
       <details>
+      <summary><a href="#tugas-2">Tutorial / Module 2 | ⭐ CI/CD</a></summary>
+
+<hr>
+<hr>
+<!-- #TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>: TABLE OF CONTENTS -->
+<h3 align="center">Refleksi Module 2 | ⭐ CI/CD</h3>   
+
+<a name="tugas-9"></a>
+<details>
+<summary>Table of Contents</summary>
+<ol>
+  <li>
+    <a href="#code-quality">Code quality issue(s)</a>
+  </li>
+  <li>
+    <a href="#ci-cd">Met the definition of Continuous Integration and Continuous Deployment</a>
+  </li>
+
+</ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+<a name="code-quality"></a>
+## Code quality issue(s)
+
+List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them!
+
+- Unused import 'org.springframework.boot.test.mock.mockito.MockBean'
+
+
+  ada banyak dalam file yang mengimport library dan tidak digunakan, solusinya saya kunjungi setiap file dan menghilangan setiap library yang tidak digunakan sehingga ketika dimerge ke main sudah hilang masalah tersebut, dengan demikian unused import tersebut mengurangi beban import library pada setiap kode
+
+- Document empty method body
+
+  terdapat method yang tidak ada penjelasan saya tambahkan comment untuk menjelaskan fungsinya sehingga menghindari fungsi yang tidak memiliki penjelasan dan kedepannya dapat digunakan oleh pengguna lain dengan mudah dan dapat dimengerti
+
+- Position literals first in String comparisons
+
+  mengerti apa maksudnya dan tujuannya untuk menghindari nullpointerexception, dan mengganti setiap masalah tersebut 
+dari
+if (columns.size() > 0 && columns.get(0).getText().equals("Product Name"))
+
+  menjadi
+
+  if (columns.size() > 0 && "Product Name".equals(columns.get(0).getText()))
+
+- Unnecessary modifier 'public' on method 'delete': the method is declared in an interface type
+
+  dengan menghilangkan segala public pada tiap method create, findall, delete, findbyid, dan update, sehingga lebih baik kodenya
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
+
+<a name="ci-cd"></a>
+## Met the definition of Continuous Integration and Continuous Deployment
+
+Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current implementation has met the definition of Continuous Integration and Continuous Deployment? Explain the reasons (minimum 3 sentences)!
+Workflows CI/CD yang digunakan pada kode saya yaitu PMD (Project Mess Detector) untuk menganalisis basis kode untuk potensi masalah dan mematuhi code conventions, supaya kodenya saya efektif dalam hal maintainabilitas dan kejelasan.
+
+Selain itu, dengan mengikuti modul saya telah menerapkan Scorecard supply chain analysis tool untuk mengevaluasi dan mengoptimalkan proses proses supply chain, sehingga dari data yang terkumpul saya bisa meningkatkan efisiensi dan mengurangi cost.
+
+saya juga telah mendeploy aplikasi kami di Koyeb, yang memungkinkan skalabilitas dan ketersediaan yang lancar. CI/CD ini dikonfigurasi untuk memantau cabang master, secara otomatis memicu build, testing, dan juga deployment ketika ada perubahan kode. Sehingga kode sudah aman dan dideploy dengan mulus.
+
+Dengan demikian, implementasi CI/CD saya, dikombinasikan dengan alat-alat seperti PMD, Scorecard, dan deployment di Koyeb, memungkinkan saya untuk mempertahankan tingkat kualitas kode yang tinggi, mengoptimalkan proses supply chain, dan menghasilkan aplikasi yang terus menerus bagus kedepannya.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
+
+
+</details>
+
+<hr>
+      <details>
       <summary><a href="#tugas-2">Tutorial / Module ? | ⭐ ?</a></summary>
 
 <hr>

@@ -158,12 +158,15 @@ class CreateProductFunctionalTest {
         boolean productFound = false;
         for (WebElement row : rows) {
             List<WebElement> columns = row.findElements(By.tagName("td"));
-            if (columns.size() > 0 && columns.get(0).getText().equals("Product Name")) {
-                continue;
+            if (columns.size() > 0 && "Product Name".equals(columns.get(0).getText())) {
+                // Your logic when "Product Name" is found
+                productFound = true; // Assuming you want to track if the product is found
+                break; // Assuming you want to stop searching once "Product Name" is found
             }
-            if (columns.size() > 0 && columns.get(0).getText().equals("Edited Product")) {
-                productFound = true;
-                break;
+            if (columns.size() > 0 && "Edited Product".equals(columns.get(0).getText())) {
+                // Your logic when "Edited Product" is found
+                productFound = true; // Assuming you want to track if the product is found
+                break; // Assuming you want to stop searching once "Edited Product" is found
             }
         }
         assertEquals(false, productFound);
