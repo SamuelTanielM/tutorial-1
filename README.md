@@ -14,7 +14,7 @@
     <a href="https://github.com/SamuelTanielM/eshop"><strong>Explore the code »</strong></a>
     <br />
     <br />
-    <a href="http://samuel-taniel-tugas.pbp.cs.ui.ac.id">View Site</a>
+    <a href="https://eshop-samuelt-adpro.koyeb.app">View Site</a>
     ·
     <a href="https://scele.cs.ui.ac.id/course/view.php?id=3747">View Assignment</a>
   </p>
@@ -163,7 +163,7 @@ Workflows CI/CD yang digunakan pada kode saya yaitu PMD (Project Mess Detector) 
 
 Selain itu, dengan mengikuti modul saya telah menerapkan Scorecard supply chain analysis tool untuk mengevaluasi dan mengoptimalkan proses proses supply chain, sehingga dari data yang terkumpul saya bisa meningkatkan efisiensi dan mengurangi cost.
 
-saya juga telah mendeploy aplikasi kami di Koyeb, yang memungkinkan skalabilitas dan ketersediaan yang lancar. CI/CD ini dikonfigurasi untuk memantau cabang master, secara otomatis memicu build, testing, dan juga deployment ketika ada perubahan kode. Sehingga kode sudah aman dan dideploy dengan mulus.
+saya juga telah mendeploy aplikasi kami di Koyeb, yang memungkinkan skalabilitas dan ketersediaan yang lancar. CI/CD ini dikonfigurasi untuk memantau cabang master, secara otomatis memicu build, testing, dan juga deployment ketika ada perubahan kode. Sehingga kode sudah aman dan dideploy dengan mulus. https://eshop-samuelt-adpro.koyeb.app
 
 Dengan demikian, implementasi CI/CD saya, dikombinasikan dengan alat-alat seperti PMD, Scorecard, dan deployment di Koyeb, memungkinkan saya untuk mempertahankan tingkat kualitas kode yang tinggi, mengoptimalkan proses supply chain, dan menghasilkan aplikasi yang terus menerus bagus kedepannya.
 
