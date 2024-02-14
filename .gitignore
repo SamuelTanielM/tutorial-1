@@ -1,6 +1,14 @@
 HELP.md
 .gradle
-build/
+build/classes
+build/generated
+build/jacoco
+build/reports/tests
+build/reports/jacoco/test/html
+build/resources
+build/test-results
+build/tmp
+!build/reports/jacoco/test/jacocoTestReport.xml
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -35,3 +43,5 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Ignore all files in build/reports/jacoco/test/ except jacocoTestReport.xml
