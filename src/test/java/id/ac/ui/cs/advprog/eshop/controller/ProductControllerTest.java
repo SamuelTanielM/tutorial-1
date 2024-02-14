@@ -44,7 +44,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void createProductPostWithValidProduct_shouldRedirectToListPage() {
+    void createProductPostWithValidProductShouldRedirectToListPage() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -58,7 +58,7 @@ class ProductControllerTest {
         verify(productService).create(product); // Changed 'service' to 'productService'
     }
     @Test
-    void createProductPostWithNullProductName_shouldReturnCreateProductPageWithError() {
+    void createProductPostWithNullProductNameShouldReturnCreateProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName(null);
@@ -73,7 +73,7 @@ class ProductControllerTest {
         verify(productService, never()).create(product); // Changed 'service' to 'productService'
     }
     @Test
-    void createProductPostWithEmptyProductName_shouldReturnCreateProductPageWithError() {
+    void createProductPostWithEmptyProductNameShouldReturnCreateProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName("");
@@ -89,7 +89,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void createProductPostWithNegativeQuantity_shouldReturnCreateProductPageWithError() {
+    void createProductPostWithNegativeQuantityShouldReturnCreateProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -107,7 +107,7 @@ class ProductControllerTest {
     // Similar tests for editProductPage, editProductPost, deleteProduct, productListPage methods
 
     @Test
-    void editProductPostWithValidProduct_shouldRedirectToListPage() {
+    void editProductPostWithValidProductShouldRedirectToListPage() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -122,7 +122,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void editProductPostWithEmptyProductName_shouldReturnEditProductPageWithError() {
+    void editProductPostWithEmptyProductNameShouldReturnEditProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName("");
@@ -138,7 +138,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void editProductPostWithNullProductName_shouldReturnEditProductPageWithError() {
+    void editProductPostWithNullProductNameShouldReturnEditProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName(null);
@@ -154,7 +154,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void editProductPostWithNegativeQuantity_shouldReturnEditProductPageWithError() {
+    void editProductPostWithNegativeQuantityShouldReturnEditProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
