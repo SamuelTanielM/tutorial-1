@@ -18,9 +18,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 class NewHomePageFunctionalTest {
 
     @LocalServerPort
-    private int port;
-
-    @LocalServerPort
     private int serverPort;
 
     @Value("${app.baseUrl:http://localhost}")

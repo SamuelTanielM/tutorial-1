@@ -21,9 +21,6 @@ import java.util.List;
 class CreateProductFunctionalTest {
 
     @LocalServerPort
-    private int port;
-
-    @LocalServerPort
     private int serverPort;
 
     @Value("${app.baseUrl:http://localhost}")
