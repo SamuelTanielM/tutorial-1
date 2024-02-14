@@ -32,7 +32,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void createProductPage_ShouldReturnCreateProductPage() {
+    void createProductPageShouldReturnCreateProductPage() {
         // Arrange
 
         // Act
@@ -44,7 +44,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void createProductPost_WithValidProduct_ShouldRedirectToListPage() {
+    void createProductPostWithValidProduct_ShouldRedirectToListPage() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -58,7 +58,7 @@ class ProductControllerTest {
         verify(productService).create(product); // Changed 'service' to 'productService'
     }
     @Test
-    void createProductPost_WithNullProductName_ShouldReturnCreateProductPageWithError() {
+    void createProductPostWithNullProductName_ShouldReturnCreateProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName(null);
@@ -73,7 +73,7 @@ class ProductControllerTest {
         verify(productService, never()).create(product); // Changed 'service' to 'productService'
     }
     @Test
-    void createProductPost_WithEmptyProductName_ShouldReturnCreateProductPageWithError() {
+    void createProductPostWithEmptyProductName_ShouldReturnCreateProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName("");
@@ -89,7 +89,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void createProductPost_WithNegativeQuantity_ShouldReturnCreateProductPageWithError() {
+    void createProductPostWithNegativeQuantity_ShouldReturnCreateProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -107,7 +107,7 @@ class ProductControllerTest {
     // Similar tests for editProductPage, editProductPost, deleteProduct, productListPage methods
 
     @Test
-    void editProductPost_WithValidProduct_ShouldRedirectToListPage() {
+    void editProductPostWithValidProduct_ShouldRedirectToListPage() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -122,7 +122,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void editProductPost_WithEmptyProductName_ShouldReturnEditProductPageWithError() {
+    void editProductPostWithEmptyProductName_ShouldReturnEditProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName("");
@@ -138,7 +138,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void editProductPost_WithNullProductName_ShouldReturnEditProductPageWithError() {
+    void editProductPostWithNullProductName_ShouldReturnEditProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName(null);
@@ -154,7 +154,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void editProductPost_WithNegativeQuantity_ShouldReturnEditProductPageWithError() {
+    void editProductPostWithNegativeQuantity_ShouldReturnEditProductPageWithError() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -170,7 +170,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void editProductPage_ShouldReturnEditProductPage() {
+    void editProductPageShouldReturnEditProductPage() {
         // Arrange
         String productId = "1";
         Product mockProduct = new Product(); // Mock a product
@@ -185,7 +185,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void deleteProduct_ShouldRedirectToListPage() {
+    void deleteProductShouldRedirectToListPage() {
         // Arrange
         String productId = "1";
 
@@ -198,7 +198,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void productListPage_ShouldReturnProductListPage() {
+    void productListPageShouldReturnProductListPage() {
         // Arrange
         List<Product> products = Collections.singletonList(new Product());
         when(productService.findAll()).thenReturn(products);

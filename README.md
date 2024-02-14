@@ -150,6 +150,13 @@ if (columns.size() > 0 && columns.get(0).getText().equals("Product Name"))
 
   dengan menghilangkan segala public pada tiap method create, findall, delete, findbyid, dan update, sehingga lebih baik kodenya
 
+- The JUnit 5 test method name 'delete_ShouldReturnDeletedProduct' doesn't match '[a-z][a-zA-Z0-9]*'
+
+  dengan mengganti semua yang tidak camel case mengikuti camel case
+
+- Substitute calls to size() == 0 (or size() != 0, size() > 0, size() < 1) with calls to isEmpty()
+  
+  mengganti size > 0 dengan !empty
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -159,11 +166,12 @@ if (columns.size() > 0 && columns.get(0).getText().equals("Product Name"))
 ## Met the definition of Continuous Integration and Continuous Deployment
 
 Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current implementation has met the definition of Continuous Integration and Continuous Deployment? Explain the reasons (minimum 3 sentences)!
+
 Workflows CI/CD yang digunakan pada kode saya yaitu PMD (Project Mess Detector) untuk menganalisis basis kode untuk potensi masalah dan mematuhi code conventions, supaya kodenya saya efektif dalam hal maintainabilitas dan kejelasan.
 
 Selain itu, dengan mengikuti modul saya telah menerapkan Scorecard supply chain analysis tool untuk mengevaluasi dan mengoptimalkan proses proses supply chain, sehingga dari data yang terkumpul saya bisa meningkatkan efisiensi dan mengurangi cost.
 
-saya juga telah mendeploy aplikasi kami di Koyeb, yang memungkinkan skalabilitas dan ketersediaan yang lancar. CI/CD ini dikonfigurasi untuk memantau cabang master, secara otomatis memicu build, testing, dan juga deployment ketika ada perubahan kode. Sehingga kode sudah aman dan dideploy dengan mulus. https://eshop-samuelt-adpro.koyeb.app
+Dalam bagian CD, saya juga telah mendeploy aplikasi saya di Koyeb, yang memungkinkan skalabilitas dan ketersediaan yang lancar. CI/CD ini dikonfigurasi untuk memantau cabang master, secara otomatis memicu build, testing, dan juga deployment ketika ada perubahan kode. Sehingga kode sudah aman dan dideploy dengan mulus.
 
 Dengan demikian, implementasi CI/CD saya, dikombinasikan dengan alat-alat seperti PMD, Scorecard, dan deployment di Koyeb, memungkinkan saya untuk mempertahankan tingkat kualitas kode yang tinggi, mengoptimalkan proses supply chain, dan menghasilkan aplikasi yang terus menerus bagus kedepannya.
 
