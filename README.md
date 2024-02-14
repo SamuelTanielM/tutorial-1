@@ -115,6 +115,9 @@ The possible improvements are as such:
   <li>
     <a href="#ci-cd">Met the definition of Continuous Integration and Continuous Deployment</a>
   </li>
+  <li>
+    <a href="#bonus">Met the definition of Continuous Integration and Continuous Deployment</a>
+  </li>
 
 </ol>
 </details>
@@ -171,10 +174,21 @@ Workflows CI/CD yang digunakan pada kode saya yaitu PMD (Project Mess Detector) 
 
 Selain itu, dengan mengikuti modul saya telah menerapkan Scorecard supply chain analysis tool untuk mengevaluasi dan mengoptimalkan proses proses supply chain, sehingga dari data yang terkumpul saya bisa meningkatkan efisiensi dan mengurangi cost.
 
-Dalam bagian CD, saya juga telah mendeploy aplikasi saya di Koyeb, yang memungkinkan skalabilitas dan ketersediaan yang lancar. CI/CD ini dikonfigurasi untuk memantau cabang master, secara otomatis memicu build, testing, dan juga deployment ketika ada perubahan kode. Sehingga kode sudah aman dan dideploy dengan mulus.
+Dalam bagian CD, saya juga telah mendeploy aplikasi saya di Koyeb, yang memungkinkan skalabilitas dan ketersediaan yang lancar. CI/CD ini dikonfigurasi untuk memantau cabang master, secara otomatis memicu build, testing, dan juga deployment ketika ada perubahan kode. Sehingga kode sudah aman dan dideploy dengan mulus. [Link Deployment](https://eshop-samuelt-adpro.koyeb.app)
 
 Dengan demikian, implementasi CI/CD saya, dikombinasikan dengan alat-alat seperti PMD, Scorecard, dan deployment di Koyeb, memungkinkan saya untuk mempertahankan tingkat kualitas kode yang tinggi, mengoptimalkan proses supply chain, dan menghasilkan aplikasi yang terus menerus bagus kedepannya.
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
+
+<a name="bonus"></a>
+## Bonus
+
+Code coverage saya gunakan https://github.com/marketplace/actions/jacoco-reporter
+
+dan dapat dicek pada [Github Action](https://github.com/SamuelTanielM/tutorial-1/actions/runs/7900930327/job/21563618793) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
