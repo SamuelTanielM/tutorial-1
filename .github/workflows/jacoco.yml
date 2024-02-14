@@ -1,3 +1,10 @@
+name : Measure coverage
+
+## Run CI jobs on all branches by default
+on :
+  push:
+  pull_request:
+
 jobs:
   test:
     runs-on: ubuntu-latest
