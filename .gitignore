@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Ignore all files in build/reports/jacoco/test/ except jacocoTestReport.xml
+/build/reports/jacoco/test/*
+!/build/reports/jacoco/test/jacocoTestReport.xml
