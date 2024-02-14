@@ -1,6 +1,5 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
-import id.ac.ui.cs.advprog.eshop.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -24,7 +23,7 @@ class HomepageControllerTest {
     }
 
     @Test
-    void homePage_ShouldReturnHomePage() {
+    void homePageShouldReturnHomePage() {
         // Act
         String viewName = homepageController.homePage(model);
 
@@ -33,7 +32,7 @@ class HomepageControllerTest {
     }
 
     @Test
-    void productListPage_ShouldRedirectToListPage() {
+    void productListPageShouldRedirectToListPage() {
         // Act
         String viewName = homepageController.productListPage(model);
 
