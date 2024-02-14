@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,7 +28,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void create_ShouldReturnCreatedProduct() {
+    void testCreateShouldReturnCreatedProduct() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -46,7 +45,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void findAll_ShouldReturnAllProducts() {
+    void testFindAllShouldReturnAllProducts() {
         // Arrange
         List<Product> productList = new ArrayList<>();
         Product product1 = new Product();
@@ -73,7 +72,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void findById_ShouldReturnProductById() {
+    void testFindByIdShouldReturnProductById() {
         // Arrange
         String productId = "1";
         Product product = new Product();
@@ -91,7 +90,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void update_ShouldReturnUpdatedProduct() {
+    void testUpdateShouldReturnUpdatedProduct() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");
@@ -108,7 +107,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void delete_ShouldReturnDeletedProduct() {
+    void testDeleteShouldReturnDeletedProduct() {
         // Arrange
         Product product = new Product();
         product.setProductName("Test Product");

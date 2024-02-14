@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
 import static org.junit.jupiter.api.Assertions.assertEquals; // Note: Corrected import statement
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 import java.util.List;
@@ -158,18 +159,18 @@ class CreateProductFunctionalTest {
         boolean productFound = false;
         for (WebElement row : rows) {
             List<WebElement> columns = row.findElements(By.tagName("td"));
-            if (columns.size() > 0 && "Product Name".equals(columns.get(0).getText())) {
+            if (!columns.isEmpty() && "Product Name".equals(columns.getFirst().getText())) {
                 // Your logic when "Product Name" is found
                 productFound = true; // Assuming you want to track if the product is found
                 break; // Assuming you want to stop searching once "Product Name" is found
             }
-            if (columns.size() > 0 && "Edited Product".equals(columns.get(0).getText())) {
+            if (!columns.isEmpty() && "Edited Product".equals(columns.getFirst().getText())) {
                 // Your logic when "Edited Product" is found
                 productFound = true; // Assuming you want to track if the product is found
                 break; // Assuming you want to stop searching once "Edited Product" is found
             }
         }
-        assertEquals(false, productFound);
+        assertFalse(productFound);
 
         deleteProductSetup(driver);
     }

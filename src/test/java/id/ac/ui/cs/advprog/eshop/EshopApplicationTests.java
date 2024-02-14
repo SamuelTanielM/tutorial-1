@@ -16,7 +16,7 @@ class EshopApplicationTests {
 		//Load the app
 	}
 	@Test
-	void main_ShouldRunWithoutException() {
+	void mainShouldRunWithoutException() {
 		try {
 			EshopApplication.main(new String[]{});
 		} catch (Exception e) {

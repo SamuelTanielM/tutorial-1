@@ -8,14 +8,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
-import id.ac.ui.cs.advprog.eshop.controller.HomepageController;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
 
 class HomepageControllerTest {
-
-    @Mock
-    private ProductService productService;
 
     @Mock
     private Model model;
