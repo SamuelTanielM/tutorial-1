@@ -20,7 +20,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run Coverage
-        run: ./gradlew testCoverage
+        run: ./gradlew test
 
       - name: Upload Report
         uses: 'actions/upload-artifact@v2'
