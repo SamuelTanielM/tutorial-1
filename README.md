@@ -199,6 +199,101 @@ dan dapat dicek pada [Github Action](https://github.com/SamuelTanielM/tutorial-1
 
 <hr>
       <details>
+      <summary><a href="#tugas-2">Tutorial / Module 3 | ⭐ OO Principles & Software Maintainability</a></summary>
+
+<hr>
+<hr>
+<!-- #TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>: TABLE OF CONTENTS -->
+<h3 align="center">Reflection ⭐ OO Principles & Software Maintainability</h3>   
+
+<a name="tugas-9"></a>
+<details>
+<summary>Table of Contents</summary>
+<ol>
+  <li>
+    <a href="#principles">Principles applied to project</a>
+  </li>
+  <li>
+    <a href="#benefits">Benefits of applying SOLID principles and example</a>
+  </li>
+  <li>
+    <a href="#disadvantages">Disadvantages if you do not apply SOLID principles to your project and example</a>
+  </li>
+
+</ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+<a name="principles"></a>
+## Principles applied to project
+
+- Separation of Concerns:
+
+  memisahkan kelas-kelas Car dan Product ke dalam file-file terpisah, membantu pemeliharaan dan kejelasan dengan memfokuskan pada fungsionalitas tertentu di setiap file.
+
+- Interface Segregation Principle (ISP): 
+
+  implementasikan interface CarRepository dan ProductRepository, untuk bergantung hanya pada metode-metode yang digunakan, supaya fleksibilitas dan skalabilitas.
+
+- Single Responsibility Principle (SRP): 
+
+  setiap kelas dalam proyek memiliki satu tanggung jawab saja, seperti operasi akses data untuk repository dan definisi model untuk kelas-kelas Car dan Product.
+
+- Open/Closed Principle (OCP): 
+
+  mengkode ke interface (CarRepository dan ProductRepository), proyek terbuka untuk perluasan melalui penambahan implementasi baru sementara tertutup untuk modifikasi pada kode yang sudah ada.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
+
+<!-- ABOUT THE PROJECT -->
+<a name="benefits"></a>
+## Benefits of applying SOLID principles and example
+
+- Pemeliharaan: 
+
+  SRP seperti pada nomor sebelumnya membuat lebih mudah memahami, memperbarui, dan memelihara program. Sehingga pas kita mau buat fitur baru perlu ditambahkan ke CarRepository, kita dapat fokus hanya pada memodifikasi kelas tersebut tanpa memengaruhi bagian lain
+
+- Fleksibilitas: 
+
+  implementasi interface dan mematuhi ISP memungkinkan untuk pertukaran implementasi dengan mudah. Misalnya, jika mekanisme penyimpanan data untuk Car perlu diubah, hanya implementasi CarRepository yang perlu dimodifikasi, sementara bagian lain dari tidak terpengaruh.
+
+- Testabilitas: 
+
+  Mengiktui prinicple SRP dan pemisahan tanggung jawab, komponen-komponen individu dari sistem menjadi lebih mudah diuji. Misalnya, unit test dapat ditulis khusus untuk implementasi CarRepository atau ProductRepository tanpa perlu menguji seluruh sistem.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
+
+<!-- ABOUT THE PROJECT -->
+<a name="disadvantages"></a>
+## Disadvantages if you do not apply SOLID principles to your project and example
+
+- Duplikasi Kode: 
+
+  Jika kita tidak mengiktu principle SRP, program dapat menjadi bengkak dan berisi kode yang berlogika sama/duplikat. Misalnya, jika ada kode untuk ngakses data tapi tersebar di berbagai file lain daripada terpusat di repository, jadi redundant karena banyak serupa diulangi di banyak file lain.
+
+- Keterikatan yang Ketat: 
+
+  kalau tidak mengikuti OCP dan DIP dapat menyebabkan dependent yang ketat antara file-file yang berbeda dari sistem. Misalnya, jika kelas-kelas langsung bergantung pada implementasi konkret daripada abstraksi, membuat perubahan pada satu bagian dari sistem mungkin memerlukan modifikasi pada beberapa bagian lain, sehingga jadi sulit di maintain.
+
+- Kesulitan dalam Skalabilitas: 
+
+  tanpa mematuhi ISP, menambahkan fungsionalitas baru ke file-file yang sudah ada mungkin memerlukan modifikasi pada interface dan implementasinya, memengaruhi bagian lain dari sistem. Misalnya, jika sebuah kelas mengimplementasikan interface yang besar dengan banyak metode, menambahkan metode baru ke antarmuka tersebut mungkin memaksa semua kelas yang mengimplementasikannya untuk memberikan implementasi, bahkan jika mereka tidak membutuhkannya. Hal ini dapat menyebabkan perubahan kode yang tidak perlu dan potensi bug.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
+
+
+</details>
+
+<hr>
+      <details>
       <summary><a href="#tugas-2">Tutorial / Module ? | ⭐ ?</a></summary>
 
 <hr>
@@ -239,7 +334,7 @@ dan dapat dicek pada [Github Action](https://github.com/SamuelTanielM/tutorial-1
 <a name="pengambilan-json"></a>
 ## pengambilan data JSON tanpa membuat model terlebih dahulu
 
-bisa tetapi prosedur yang perlu dilakukan dalam memparsing 
+bisa tetapi prosedur yang perlu dilakukan dalam memparsing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -247,5 +342,6 @@ bisa tetapi prosedur yang perlu dilakukan dalam memparsing
 
 
 </details>
+
   </ol>
 </details>
