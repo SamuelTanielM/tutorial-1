@@ -17,7 +17,6 @@ public class PaymentTest {
     private List<Product> products;
 
     List<Order> orders;
-    Map<String, String> paymentData;
 
     @BeforeEach
     void setUp() {
@@ -41,9 +40,6 @@ public class PaymentTest {
         this.orders.add (order1);
         this.orders.add (order2);
 
-        this.paymentData = new HashMap<>();
-        paymentData.put("voucherCode", "ESHOP12345678");
-
     }
 
     //id: String
@@ -52,45 +48,124 @@ public class PaymentTest {
     //paymentData: Map<String, String> to save payment sub-feature data.
 
     @Test
-    void testPaymentByVoucherCodeFailed() {
+    void testPaymentByVoucherCodeSuccess() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("voucherCode", "ESHOP1234ABC5678");
+
         Payment payment = new Payment(
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
-                PaymentStatus.SUCCESS.getValue(),
-                this.paymentData);
+                "VOUCHER",
+                "",
+                paymentData);
 
-        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
+        assertEquals("SUCCESS", payment.getStatus());
     }
     //If the payment status is set to “SUCCESS”, then the status of the Order object that is related to the Payment object will also be “SUCCESS”.
 
     @Test
     void testPaymentByVoucherCodeFailed() {
+        Map<String, String> paymentFpaymentDataailed = new HashMap<>();
+        paymentData.put("voucherCode", "INVALIDCODE");
+
         Payment payment = new Payment(
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
-                PaymentStatus.REJECTED.getValue(),
-                this.paymentData);
+                "VOUCHER",
+                "",
+                paymentData);
 
-        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
+        assertEquals("REJECTED", payment.getStatus());
     }
-
     @Test
-    void testCreateOrderInvalidStatus() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new Payment(
-                    "13652556-012a-4c07-b546-54eb1396d79b",
-                    this.orders.get(1),
-                    "DAA BASDAT KUIS ;-;",
-                    this.paymentData);
-        });
-    }
+    void testCashOnDeliverySuccess() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("address", "123 Street, City");
+        paymentData.put("deliveryFee", "10");
 
-    @Test
-    void testSetStatusToInvalidStatus() {
         Payment payment = new Payment(
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
-                this.paymentData);
-        assertThrows(IllegalArgumentException.class, () -> payment.setStatus("MEOW"));
+                "COD",
+                "",
+                paymentData);
+
+        assertEquals("SUCCESS", payment.getStatus());
+    }
+
+    @Test
+    void testCashOnDeliveryRejectedEmptyAddress() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("deliveryFee", "10");
+
+        Payment payment = new Payment(
+                "13652556-012a-4c07-b546-54eb1396d79b",
+                this.orders.get(1),
+                "COD",
+                "",
+                paymentData);
+
+        assertEquals("REJECTED", payment.getStatus());
+    }
+
+    @Test
+    void testCashOnDeliveryRejectedEmptyDeliveryFee() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("address", "123 Street, City");
+
+        Payment payment = new Payment(
+                "13652556-012a-4c07-b546-54eb1396d79b",
+                this.orders.get(1),
+                "COD",
+                "",
+                paymentData);
+
+        assertEquals("REJECTED", payment.getStatus());
+    }
+
+    @Test
+    void testPaymentByBankTransferSuccess() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("bankName", "Bank XYZ");
+        paymentData.put("referenceCode", "123456");
+
+        Payment payment = new Payment(
+                "13652556-012a-4c07-b546-54eb1396d79b",
+                this.orders.get(1),
+                "COD",
+                "",
+                paymentData);
+
+        assertEquals("SUCCESS", payment.getStatus());
+    }
+
+    @Test
+    void testPaymentByBankTransferRejectedEmptyBankName() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("referenceCode", "123456");
+
+        Payment payment = new Payment(
+                "13652556-012a-4c07-b546-54eb1396d79b",
+                this.orders.get(1),
+                "COD",
+                "",
+                paymentData);
+
+        assertEquals("REJECTED", payment.getStatus());
+    }
+
+    @Test
+    void testPaymentByBankTransferRejectedEmptyReferenceCode() {
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("bankName", "Bank XYZ");
+
+        Payment payment = new Payment(
+                "13652556-012a-4c07-b546-54eb1396d79b",
+                this.orders.get(1),
+                "COD",
+                "",
+                paymentData);
+
+        assertEquals("REJECTED", payment.getStatus());
     }
 }
