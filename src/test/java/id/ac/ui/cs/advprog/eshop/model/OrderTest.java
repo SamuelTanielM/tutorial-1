@@ -1,4 +1,5 @@
 package id.ac.ui.cs.advprog.eshop.model;
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ class OrderTest {
         assertEquals("13652556-012a-407-b546-54eb1396d79b", order.getId());
         assertEquals(1708560060L, order.getOrderTime());
         assertEquals("Safira Sudrajat", order.getAuthor());
-        assertEquals("WAITING_PAYMENT", order.getStatus().toString());
+        assertEquals(String.valueOf(OrderStatus.WAITING_PAYMENT), order.getStatus());
     }
 
     @Test
@@ -55,8 +56,8 @@ class OrderTest {
                 this.products,
                 1708560000L,
                 "Safira Sudrajat",
-                "SUCCESS");
-        assertEquals("SUCCESS", order.getStatus());
+                OrderStatus.SUCCESS.getValue());
+        assertEquals(OrderStatus.SUCCESS.getValue(), order.getStatus());
     }
 
     @Test
@@ -76,8 +77,8 @@ class OrderTest {
                 this.products,
                 1708560000L,
                 "Safira Sudrajat");
-        order.setStatus("CANCELLED");
-        assertEquals("CANCELLED", order.getStatus());
+        order.setStatus(String.valueOf(OrderStatus.CANCELLED));
+        assertEquals(String.valueOf(OrderStatus.CANCELLED), order.getStatus());
     }
 
     @Test
