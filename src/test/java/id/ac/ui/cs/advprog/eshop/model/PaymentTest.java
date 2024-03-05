@@ -56,23 +56,20 @@ public class PaymentTest {
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
                 "VOUCHER",
-                "",
                 paymentData);
 
         assertEquals("SUCCESS", payment.getStatus());
     }
-    //If the payment status is set to “SUCCESS”, then the status of the Order object that is related to the Payment object will also be “SUCCESS”.
 
     @Test
     void testPaymentByVoucherCodeFailed() {
-        Map<String, String> paymentFpaymentDataailed = new HashMap<>();
+        Map<String, String> paymentData = new HashMap<>();
         paymentData.put("voucherCode", "INVALIDCODE");
 
         Payment payment = new Payment(
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
                 "VOUCHER",
-                "",
                 paymentData);
 
         assertEquals("REJECTED", payment.getStatus());
@@ -87,7 +84,6 @@ public class PaymentTest {
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
                 "COD",
-                "",
                 paymentData);
 
         assertEquals("SUCCESS", payment.getStatus());
@@ -102,7 +98,6 @@ public class PaymentTest {
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
                 "COD",
-                "",
                 paymentData);
 
         assertEquals("REJECTED", payment.getStatus());
@@ -117,7 +112,6 @@ public class PaymentTest {
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
                 "COD",
-                "",
                 paymentData);
 
         assertEquals("REJECTED", payment.getStatus());
@@ -132,8 +126,7 @@ public class PaymentTest {
         Payment payment = new Payment(
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
-                "COD",
-                "",
+                "BANK_TRANSFER",
                 paymentData);
 
         assertEquals("SUCCESS", payment.getStatus());
@@ -147,8 +140,7 @@ public class PaymentTest {
         Payment payment = new Payment(
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
-                "COD",
-                "",
+                "BANK_TRANSFER",
                 paymentData);
 
         assertEquals("REJECTED", payment.getStatus());
@@ -162,8 +154,7 @@ public class PaymentTest {
         Payment payment = new Payment(
                 "13652556-012a-4c07-b546-54eb1396d79b",
                 this.orders.get(1),
-                "COD",
-                "",
+                "BANK_TRANSFER",
                 paymentData);
 
         assertEquals("REJECTED", payment.getStatus());
