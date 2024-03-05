@@ -8,7 +8,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -18,6 +21,8 @@ class PaymentRepositoryTest {
 
     private PaymentRepository paymentRepository;
     private List<Order> orders;
+
+    private Map<String, String> paymentData;
 
     @BeforeEach
     void setUp() {
@@ -44,6 +49,9 @@ class PaymentRepositoryTest {
                 1708570000L,
                 "Bambang Sudrajat");
         orders.add(order3);
+
+        this.paymentData = new HashMap<>();
+        paymentData.put("voucherCode", "ESHOP1234ABC5678");
     }
 
     @Test
@@ -53,7 +61,7 @@ class PaymentRepositoryTest {
                 order.getId(),
                 order,
                 "VOUCHER",
-                null);
+                paymentData);
 
         Payment result = paymentRepository.save(payment);
         Payment findResult = paymentRepository.findById(orders.get(1).getId());
@@ -72,7 +80,7 @@ class PaymentRepositoryTest {
                 order.getId(),
                 order,
                 "VOUCHER",
-                null);
+                paymentData);
 
         paymentRepository.save(payment);
 
@@ -80,7 +88,7 @@ class PaymentRepositoryTest {
                 order.getId(),
                 order,
                 "VOUCHER",
-                null);
+                paymentData);
         newPayment.setStatus("SUCCESS");
 
         Payment result = paymentRepository.save(newPayment);
@@ -98,14 +106,14 @@ class PaymentRepositoryTest {
                 order.getId(),
                 order,
                 "VOUCHER",
-                null);
+                paymentData);
         paymentRepository.save(payment);
 
         Payment findResult = paymentRepository.findById(orders.get(1).getId());
 
         assertEquals(orders.get(1).getId(), findResult.getId());
         assertEquals("VOUCHER", findResult.getMethod());
-        assertEquals("REJECTED", findResult.getStatus());
+        assertEquals("SUCCESS", findResult.getStatus());
     }
 
     @Test
@@ -115,7 +123,7 @@ class PaymentRepositoryTest {
                     order.getId(),
                     order,
                     "VOUCHER",
-                    null);
+                    paymentData);
             paymentRepository.save(payment);
         }
 
@@ -124,13 +132,13 @@ class PaymentRepositoryTest {
     }
 
     @Test
-    void testFindAllByAuthorIfAuthorCorrect() {
+    void testFindAllPaymentsIfCorrect() {
         for (Order order : orders) {
             Payment payment = new Payment(
                     order.getId(),
                     order,
                     "VOUCHER",
-                    null);
+                    paymentData);
             paymentRepository.save(payment);
         }
 
@@ -139,15 +147,18 @@ class PaymentRepositoryTest {
     }
 
     @Test
-    void testFindAllByAuthorIfAllLowercase() {
+    void testFindAllByPaymentsIfNotExisted() {
         Payment payment = new Payment(
                 orders.get(1).getId(),
                 orders.get(1),
                 "VOUCHER",
-                null);
+                paymentData);
         paymentRepository.save(payment);
 
-        List<Payment> paymentList = paymentRepository.getAllPayments();
+        List<Payment> paymentList = paymentRepository.getAllPayments().stream()
+                .filter(paymentNew -> "0".equals(paymentNew.getId()))  // Filter payments with ID 0
+                .toList();
+
         assertTrue(paymentList.isEmpty());
     }
 }

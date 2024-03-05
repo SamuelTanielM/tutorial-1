@@ -48,6 +48,10 @@ public class Payment {
 
 
     private void setPaymentByVoucherCodeStatus() {
+        if (paymentData == null) {
+            throw new IllegalArgumentException("Payment data is null");
+        }
+
         if (paymentData.containsKey("voucherCode")) {
             String voucherCode = paymentData.get("voucherCode");
             if (isValidVoucherCode(voucherCode)) {
@@ -58,11 +62,15 @@ public class Payment {
         }
     }
 
+
     private boolean isValidVoucherCode(String voucherCode) {
         return voucherCode.length() == 16 && voucherCode.startsWith("ESHOP");
     }
 
     private void setCashOnDeliveryStatus() {
+        if (paymentData == null) {
+            throw new IllegalArgumentException("Payment data is null");
+        }
         if (paymentData.containsKey("address") && paymentData.containsKey("deliveryFee")) {
             String address = paymentData.get("address");
             String deliveryFee = paymentData.get("deliveryFee");
@@ -77,6 +85,10 @@ public class Payment {
     }
 
     private void setPaymentByBankTransferStatus() {
+        if (paymentData == null) {
+            throw new IllegalArgumentException("Payment data is null");
+        }
+
         if (paymentData.containsKey("bankName") && paymentData.containsKey("referenceCode")) {
             String bankName = paymentData.get("bankName");
             String referenceCode = paymentData.get("referenceCode");
