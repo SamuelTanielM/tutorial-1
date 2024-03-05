@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class ProductRepositoryTest {
     @InjectMocks
-    ProductRepository productRepository;
+    ProductRepositoryImpl productRepository;
     @Test
     void testCreateAndFind(){
         Product product = new Product();
@@ -117,7 +117,7 @@ class ProductRepositoryTest {
         productToDelete.setProductQuantity(50);
 
         // Attempt to delete the product that does not exist
-        assertThrows(ProductRepository.ProductNotFoundException.class, () -> {
+        assertThrows(ProductRepositoryImpl.ProductNotFoundException.class, () -> {
             productRepository.delete(productToDelete);
         });
 
@@ -146,7 +146,7 @@ class ProductRepositoryTest {
         productToUpdate.setProductQuantity(50);
 
         // Attempt to update the product that does not exist
-        assertThrows(ProductRepository.ProductNotFoundException.class, () -> {
+        assertThrows(ProductRepositoryImpl.ProductNotFoundException.class, () -> {
             productRepository.update(productToUpdate);
         });
 
@@ -164,7 +164,7 @@ class ProductRepositoryTest {
     void testFindByIdException() {
         // Attempt to find a product with an ID that does not exist
         String nonExistentId = "123456";
-        assertThrows(ProductRepository.ProductNotFoundException.class, () -> {
+        assertThrows(ProductRepositoryImpl.ProductNotFoundException.class, () -> {
             productRepository.findById(nonExistentId);
         });
     }
@@ -194,7 +194,7 @@ class ProductRepositoryTest {
         product.setProductQuantity(100);
         productRepository.create(product);
 
-        assertThrows(ProductRepository.ProductNotFoundException.class, () -> {
+        assertThrows(ProductRepositoryImpl.ProductNotFoundException.class, () -> {
             productRepository.findById("123456");
         });
     }
