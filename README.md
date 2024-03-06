@@ -294,6 +294,66 @@ dan dapat dicek pada [Github Action](https://github.com/SamuelTanielM/tutorial-1
 
 <hr>
       <details>
+      <summary><a href="#tugas-2">Tutorial / Module 4 | ⭐ TDD & RefactoringURL</a></summary>
+
+<hr>
+<hr>
+<!-- #TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>:TODO:>>>: TABLE OF CONTENTS -->
+<h3 align="center">Reflection TDD & RefactoringURL</h3>   
+
+<a name="tugas-4"></a>
+<details>
+<summary>Table of Contents</summary>
+<ol>
+  <li>
+    <a href="#TDD-flow">TDD flow is useful enough or not</a>
+  </li>
+  <li>
+    <a href="#FIRST">successfully followed F.I.R.S.T. principle or not.</a>
+  </li>
+</ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+<a name="TDD-flow"></a>
+> Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+
+Menurut pandangan saya, pengembangan berbasis Test-Driven Development (TDD) sangat bermanfaat. Hal ini dikarenakan adanya
+
+- Evaluasi Kebutuhan Pengujian: harus memastikan bahwa sistem telah sepenuhnya memahami kebutuhan pengujian sebelum mulai mengimplementasikan kode. membantu sekali dalam menentukan kasus uji yang tepat dan memastikan bahwa semua kasus uji yang diperlukan telah ditangani. 
+- Refleksi Terhadap Desain Kode: Dengan adanya ini dapat menghindari masalah yang mungkin ada dari segi prinsip-prinsip desain 
+- Penambahan Pengujian Unit: semua bagian kode tercakup oleh pengujian unit yang sesuai. Ini memastikan bahwa kodenya dapat dipercaya dan mudah untuk dipelihara. 
+- Integrasi dan Pengujian End-to-End: memastikan bahwa kode saya diuji secara menyeluruh melalui pengujian integrasi dan end-to-end supaya pasti sistemnya berfungsi dengan baik saat digabungkan.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
+
+<a name="FIRST"></a>
+> You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+
+
+Pada kasus pengujian yang telah saya lakukan, saya akan menilai apakah mereka mengikuti prinsip F.I.R.S.T.:
+
+- Fast (Cepat): Dalam tes yang udah saya buat, saya sudah memastikan bahwa mereka berjalan dengan cepat dan efisien, tanpa waktu yang berlebihan. 
+- Independent (Independen): Setiap tes sudah berdiri sendiri dan tidak bergantung pada hasil tes lainnya. 
+- Repeatable (Dapat diulang): tes saya dapat diulang dan memberikan hasil yang konsisten setiap kali dijalankan. 
+- Self-Validating (Memvalidasi diri): Dalam tes saya, hasilnya jelas dan mudah dipahami apakah tes tersebut lulus atau gagal. 
+- Timely (Tepat waktu): Saya tidak menunda pengujian dan sudah mengintegrasikannya ke dalam siklus pengembangan secara teratur.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<hr>
+
+
+</details>
+
+
+
+<hr>
+      <details>
       <summary><a href="#tugas-2">Tutorial / Module ? | ⭐ ?</a></summary>
 
 <hr>
@@ -342,6 +402,7 @@ bisa tetapi prosedur yang perlu dilakukan dalam memparsing
 
 
 </details>
+
 
   </ol>
 </details>
